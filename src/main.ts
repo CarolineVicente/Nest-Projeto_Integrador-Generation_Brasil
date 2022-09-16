@@ -7,19 +7,20 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-  .setTitle('Todo Mobile')
-  .setDescription('Projeto Todo Mobile')
-  .setContact("Henrique Felipe","http://www.generationbrasil.online","generation@email.com")
-  .setVersion('1.0')
-  .addBearerAuth()
-  .build()
+    .setTitle('Projeto Uaná')
+    .setDescription('Projeto Integrador -> E-Commerce')
+    .setContact('Grupo 6 - Mobile 4', 'ProjetoUana.com.br', 'projetouana@gmail.com')
+    .setVersion('1.0')
+    .build()
+
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('/swagger', app, document)
 
-  process.env.TZ = '-03:00'
-
+  process.env.TZ = "-03:00"
   app.useGlobalPipes(new ValidationPipe())
   app.enableCors()
-  await app.listen(3000);
+
+  await app.listen(process.env.PORT || 3000);
+
 }
 bootstrap();

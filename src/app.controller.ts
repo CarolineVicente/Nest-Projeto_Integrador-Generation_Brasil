@@ -3,11 +3,11 @@ import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
-  constructor() {}
+  constructor() { }
 
   @ApiExcludeEndpoint()
   @Get()
-  redirect(@Res() res: any) {
-    return res.redirect('/swagger')
+  async redirect(@Res() resposta: any) {
+    return resposta.redirect('/swagger')
   }
 }
